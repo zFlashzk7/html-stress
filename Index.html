@@ -9,19 +9,19 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', 'Arial', 'Helvetica', sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
+            background: #000000;
             min-height: 100vh;
-            background: #000000; /* fundo externo preto */
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 15px;
         }
 
-        /* splash screen - centralizado no mobile */
+        /* TELA INICIAL */
         .splash-screen {
             position: fixed;
             top: 0;
@@ -38,10 +38,10 @@
 
         .splash-title {
             color: #7800ff;
-            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-size: clamp(2rem, 8vw, 5rem);
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             opacity: 0;
             animation: fadeIn 2s forwards;
             text-align: center;
@@ -53,7 +53,7 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        /* tela de seleção - só mobile/pc */
+        /* TELA DE SELEÇÃO MOBILE/PC */
         .selection-screen {
             position: fixed;
             top: 0;
@@ -71,32 +71,33 @@
         .selection-box {
             background: transparent;
             text-align: center;
+            width: 90%;
+            max-width: 600px;
         }
 
         .selection-box p {
-            color: #ffffff;
-            font-size: 1.5rem;
-            margin-bottom: 30px;
+            color: #7800ff;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            margin-bottom: 20px;
         }
 
         .selection-buttons {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
         }
 
         .selection-btn {
             background: #000000;
             border: 3px solid #7800ff;
-            border-radius: 16px;
+            border-radius: 14px;
             color: #7800ff;
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: bold;
-            padding: 10px 40px;
+            padding: clamp(6px, 2vw, 10px) clamp(20px, 8vw, 40px);
             cursor: pointer;
             transition: 0.3s;
             text-transform: uppercase;
-            min-width: 140px;
         }
 
         .selection-btn:hover {
@@ -108,106 +109,76 @@
             display: none;
         }
 
-        /* container principal - fundo preto */
+        /* CONTAINER PRINCIPAL - SEM BORDA EXTERNA */
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 800px;
             background: transparent;
+            padding: 0;
         }
 
-        /* título roxo fora do launch attack */
-        .main-title {
-            color: #7800ff;
-            font-size: 3.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            letter-spacing: 2px;
-            text-align: center;
+        /* cada linha de campo */
+        .field-group {
+            margin-bottom: 18px;
         }
 
-        /* launch attack box - degradê mais preto que cinza */
-        .launch-box {
-            background: linear-gradient(180deg, #1a1a1a 0%, #000000 100%);
-            border: 3px solid #7800ff;
-            border-radius: 24px;
-            padding: 30px 35px;
-            box-shadow: 0 0 30px rgba(120, 0, 255, 0.3);
-        }
-
-        /* título interno */
-        .launch-title {
-            color: #ffffff;
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            border-bottom: 2px solid #7800ff;
-            padding-bottom: 10px;
-        }
-
-        /* botões layer */
-        .layer-buttons {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .layer-btn {
-            background: transparent;
-            border: 3px solid #7800ff;
-            border-radius: 16px;
-            color: #7800ff;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 8px 30px;
-            cursor: pointer;
-            transition: 0.2s;
-            text-transform: uppercase;
-        }
-
-        .layer-btn.active {
-            background: #7800ff;
-            color: black;
-        }
-
-        /* campos */
         .field-label {
-            color: #aaaaaa;
+            color: #cccccc;
             font-size: 0.9rem;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
+            text-transform: lowercase;
+        }
+
+        .field-label:first-letter {
             text-transform: uppercase;
         }
 
         .field-input {
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            border: 3px solid #7800ff;
-            border-radius: 16px;
-            padding: 14px 18px;
+            background: #0a0a0a;
+            border: 2px solid #7800ff;
+            border-radius: 10px;
+            padding: 10px 14px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.95rem;
             outline: none;
         }
 
         .field-input::placeholder {
-            color: #555555;
-            font-style: italic;
+            color: #444444;
         }
 
-        /* método (dropdown) */
+        /* linha de dois elementos lado a lado */
+        .row-duo {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .row-duo .left {
+            flex: 1;
+        }
+
+        .row-duo .right {
+            width: 90px;
+            min-width: 90px;
+        }
+
+        /* método com seta (dropdown personalizado) */
         .method-selector {
             position: relative;
             width: 100%;
+            z-index: 20;
         }
 
         .method-display {
             width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            border: 3px solid #7800ff;
-            border-radius: 16px;
-            padding: 14px 18px;
+            background: #0a0a0a;
+            border: 2px solid #7800ff;
+            border-radius: 10px;
+            padding: 10px 14px;
             color: white;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -225,13 +196,13 @@
             top: 110%;
             left: 0;
             right: 0;
-            background: #1a1a1a;
-            border: 3px solid #7800ff;
-            border-radius: 16px;
-            max-height: 250px;
+            background: #111111;
+            border: 2px solid #7800ff;
+            border-radius: 10px;
+            max-height: 220px;
             overflow-y: auto;
             display: none;
-            z-index: 10;
+            z-index: 30;
         }
 
         .method-dropdown.show {
@@ -239,10 +210,11 @@
         }
 
         .method-item {
-            padding: 12px 16px;
+            padding: 10px 14px;
             color: white;
             cursor: pointer;
             border-bottom: 1px solid #333;
+            font-size: 0.9rem;
         }
 
         .method-item:hover {
@@ -250,76 +222,71 @@
             color: black;
         }
 
-        /* barra de progresso - embaixo do botão */
-        .progress-area {
-            margin-top: 20px;
+        /* botões layer 4 e 7 */
+        .layer-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
-        .progress-bar-bg {
-            width: 100%;
-            height: 12px;
-            background: #222222;
-            border: 2px solid #333;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0%;
-            background: #7800ff;
-            transition: width 0.3s linear;
-            border-radius: 20px;
-        }
-
-        .time-display {
-            text-align: right;
-            color: #aaaaaa;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-
-        /* botão attack - letras minúsculas */
-        .attack-btn {
-            background: #7800ff;
-            border: none;
-            border-radius: 20px;
-            color: white;
-            font-size: 2rem;
+        .layer-btn {
+            background: transparent;
+            border: 2px solid #7800ff;
+            border-radius: 10px;
+            color: #7800ff;
+            font-size: 1.2rem;
             font-weight: bold;
-            padding: 12px 20px;
+            padding: 8px 25px;
             cursor: pointer;
             transition: 0.2s;
-            text-transform: lowercase; /* minúsculas */
+            text-transform: uppercase;
+        }
+
+        .layer-btn.active {
+            background: #7800ff;
+            color: black;
+        }
+
+        /* botão ataque - cor verde atualizada */
+        .attack-btn {
             width: 100%;
-            margin: 15px 0 5px;
-            box-shadow: 0 0 20px #7800ff;
+            background: #7800ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: lowercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px #7800ff;
         }
 
         .attack-btn:first-letter {
-            text-transform: uppercase; /* primeira letra maiúscula */
+            text-transform: uppercase;
         }
 
         .attack-btn.loading {
             background: #333333;
             box-shadow: none;
-            color: #888888;
-            cursor: wait;
+            color: #888;
             position: relative;
         }
 
         .attack-btn.loading::after {
             content: "◌";
-            margin-left: 15px;
-            font-size: 2rem;
+            margin-left: 10px;
+            font-size: 1.6rem;
             animation: spin 1s linear infinite;
             display: inline-block;
         }
 
         .attack-btn.sent {
-            background: #00aa00;
-            box-shadow: 0 0 20px #00aa00;
-            color: white;
+            background: #00ff70;
+            box-shadow: 0 0 15px #00ff70;
         }
 
         .attack-btn:disabled {
@@ -332,134 +299,187 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* layout mobile (padrão) */
-        .grid-mobile {
+        /* barra de progresso roxa */
+        .progress-area {
+            margin-top: 15px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #222222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #7800ff;
+            transition: width 0.3s linear;
+            border-radius: 10px;
+        }
+
+        .time-display {
+            text-align: right;
+            color: #aaaaaa;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        /* ========== LAYOUT MOBILE ========== */
+        .mobile-layout .field-group {
+            margin-bottom: 16px;
+        }
+
+        .mobile-layout .row-duo {
+            display: block;
+        }
+
+        .mobile-layout .row-duo .left,
+        .mobile-layout .row-duo .right {
+            width: 100%;
+            min-width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .mobile-layout .row-duo .right {
+            margin-bottom: 0;
+        }
+
+        /* ========== LAYOUT PC ========== */
+        .pc-layout .field-group {
+            margin-bottom: 18px;
+        }
+
+        .pc-layout .row-duo {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            gap: 15px;
+            align-items: center;
         }
 
-        /* layout pc */
-        .grid-pc {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px 30px;
-            align-items: start;
+        .pc-layout .row-duo .left {
+            flex: 1;
         }
 
-        .grid-pc .field-full {
-            grid-column: span 2;
-        }
-
-        .grid-pc .attack-btn {
-            grid-column: span 2;
-        }
-
-        .grid-pc .progress-area {
-            grid-column: span 2;
-        }
-
-        /* responsivo */
-        @media (max-width: 700px) {
-            .launch-box {
-                padding: 20px 15px;
-            }
-            .main-title {
-                font-size: 2.5rem;
-            }
-            .layer-btn {
-                font-size: 1.2rem;
-                padding: 8px 20px;
-            }
-            .selection-btn {
-                font-size: 1.5rem;
-                padding: 8px 30px;
-                min-width: 120px;
-            }
+        .pc-layout .row-duo .right {
+            width: 90px;
+            min-width: 90px;
         }
     </style>
 </head>
 <body>
-    <!-- tela inicial -->
+    <!-- TELA INICIAL -->
     <div class="splash-screen" id="splash">
         <div class="splash-title">KILLER STRESSER</div>
     </div>
 
-    <!-- tela de seleção mobile/pc -->
+    <!-- TELA DE SELEÇÃO -->
     <div class="selection-screen hidden" id="selectionScreen">
         <div class="selection-box">
             <p>To improve your experience, select:</p>
             <div class="selection-buttons">
                 <button class="selection-btn" id="selectMobile">Mobile</button>
-                <button class="selection-btn" id="selectPC">Pc</button>
+                <button class="selection-btn" id="selectPC">PC</button>
             </div>
         </div>
     </div>
 
-    <!-- interface principal -->
+    <!-- INTERFACE PRINCIPAL -->
     <div class="container hidden" id="mainInterface">
-        <div class="main-title">KILLER STRESSER</div>
+        <!-- Botões Layer -->
+        <div class="layer-buttons">
+            <button class="layer-btn active" id="layer7Btn">LAYER 7</button>
+            <button class="layer-btn" id="layer4Btn">LAYER 4</button>
+        </div>
 
-        <div class="launch-box">
-            <div class="launch-title">launch attack</div>
-
-            <!-- botões layer -->
-            <div class="layer-buttons">
-                <button class="layer-btn active" id="layer7Btn">LAYER 7</button>
-                <button class="layer-btn" id="layer4Btn">LAYER 4</button>
+        <!-- Versão MOBILE -->
+        <div id="mobileLayout" class="mobile-layout">
+            <div class="field-group">
+                <div class="field-label">method</div>
+                <div class="method-selector">
+                    <div class="method-display" id="methodDisplayMobile">HTTPS-BYPASS</div>
+                    <div class="method-dropdown" id="methodDropdownMobile"></div>
+                </div>
             </div>
 
-            <!-- grid que muda conforme mobile/pc -->
-            <div id="dynamicGrid" class="grid-mobile">
-                <!-- target -->
-                <div>
-                    <div class="field-label" id="targetLabel">DOMAIN OR URL</div>
-                    <input type="text" class="field-input" id="targetInput" placeholder="example.com">
-                </div>
+            <div class="field-group">
+                <div class="field-label" id="targetLabelMobile">domain or url</div>
+                <input type="text" class="field-input" id="domainMobile" placeholder="example.com">
+            </div>
+            <div class="field-group">
+                <div class="field-label">port</div>
+                <input type="number" class="field-input" id="portMobile" placeholder="443" value="443">
+            </div>
 
-                <!-- porta -->
-                <div>
-                    <div class="field-label">PORT</div>
-                    <input type="number" class="field-input" id="portInput" placeholder="443" min="1" max="65535">
-                </div>
+            <div class="field-group">
+                <div class="field-label">time</div>
+                <input type="number" class="field-input" id="timeMobile" placeholder="60" value="60">
+            </div>
+            <div class="field-group">
+                <div class="field-label">concurrents</div>
+                <input type="number" class="field-input" id="concurrentMobile" placeholder="1" value="1" min="1" max="99999">
+            </div>
 
-                <!-- método -->
-                <div>
-                    <div class="field-label">METHOD</div>
-                    <div class="method-selector">
-                        <div class="method-display" id="methodDisplay">HTTPS-BYPASS</div>
-                        <div class="method-dropdown" id="methodDropdown"></div>
+            <button class="attack-btn" id="attackMobile">attack</button>
+
+            <div class="progress-area" id="progressAreaMobile" style="display: none;">
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" id="progressFillMobile"></div>
+                </div>
+                <div class="time-display" id="timeDisplayMobile"></div>
+            </div>
+        </div>
+
+        <!-- Versão PC -->
+        <div id="pcLayout" class="pc-layout hidden">
+            <div class="field-group">
+                <div class="field-label">method</div>
+                <div class="method-selector">
+                    <div class="method-display" id="methodDisplayPC">HTTPS-BYPASS</div>
+                    <div class="method-dropdown" id="methodDropdownPC"></div>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <div class="row-duo">
+                    <div class="left">
+                        <div class="field-label" id="targetLabelPC">domain or url</div>
+                        <input type="text" class="field-input" id="domainPC" placeholder="example.com">
+                    </div>
+                    <div class="right">
+                        <div class="field-label">port</div>
+                        <input type="number" class="field-input" id="portPC" placeholder="443" value="443">
                     </div>
                 </div>
+            </div>
 
-                <!-- tempo -->
-                <div>
-                    <div class="field-label">TIME (SEC)</div>
-                    <input type="number" class="field-input" id="timeInput" placeholder="60" min="1">
-                </div>
-
-                <!-- concurrents -->
-                <div>
-                    <div class="field-label">CONCURRENTS</div>
-                    <input type="number" class="field-input" id="concurrencyInput" placeholder="1" min="1" max="99999">
-                </div>
-
-                <!-- botão attack -->
-                <button class="attack-btn" id="attackBtn">attack</button>
-
-                <!-- barra de progresso (agora embaixo do botão) -->
-                <div class="progress-area" id="progressArea" style="display: none;">
-                    <div class="progress-bar-bg">
-                        <div class="progress-fill" id="progressFill"></div>
+            <div class="field-group">
+                <div class="row-duo">
+                    <div class="left">
+                        <div class="field-label">time</div>
+                        <input type="number" class="field-input" id="timePC" placeholder="60" value="60">
                     </div>
-                    <div class="time-display" id="timeDisplay"></div>
+                    <div class="right">
+                        <div class="field-label">concurrents</div>
+                        <input type="number" class="field-input" id="concurrentPC" placeholder="1" value="1" min="1" max="99999">
+                    </div>
                 </div>
+            </div>
+
+            <button class="attack-btn" id="attackPC">attack</button>
+
+            <div class="progress-area" id="progressAreaPC" style="display: none;">
+                <div class="progress-bar-bg">
+                    <div class="progress-fill" id="progressFillPC"></div>
+                </div>
+                <div class="time-display" id="timeDisplayPC"></div>
             </div>
         </div>
     </div>
 
     <script>
-        // listas de métodos
+        // ---------- LISTAS DE MÉTODOS ----------
         const layer7Methods = [
             "HTTPS-BYPASS", "HTTP-BROWSER", "HTTP-FLOOD", "HTTPS-FLOOD",
             "HTTP-BYPASS", "HTTP-POST", "HTTP-GET", "TLS-HTTP", "TLS-HTTPS",
@@ -472,215 +492,266 @@
             "UDP-AMP-MEMCACHED", "UDP-BOTNET", "TCP-BOTNET"
         ];
 
-        // elementos
+        // ---------- ELEMENTOS ----------
         const splash = document.getElementById('splash');
         const selectionScreen = document.getElementById('selectionScreen');
         const mainInterface = document.getElementById('mainInterface');
-        const dynamicGrid = document.getElementById('dynamicGrid');
+        const mobileLayout = document.getElementById('mobileLayout');
+        const pcLayout = document.getElementById('pcLayout');
         const selectMobile = document.getElementById('selectMobile');
         const selectPC = document.getElementById('selectPC');
         const layer7Btn = document.getElementById('layer7Btn');
         const layer4Btn = document.getElementById('layer4Btn');
-        const targetLabel = document.getElementById('targetLabel');
-        const targetInput = document.getElementById('targetInput');
-        const portInput = document.getElementById('portInput');
-        const methodDisplay = document.getElementById('methodDisplay');
-        const methodDropdown = document.getElementById('methodDropdown');
-        const timeInput = document.getElementById('timeInput');
-        const concurrencyInput = document.getElementById('concurrencyInput');
-        const progressArea = document.getElementById('progressArea');
-        const progressFill = document.getElementById('progressFill');
-        const timeDisplay = document.getElementById('timeDisplay');
-        const attackBtn = document.getElementById('attackBtn');
 
+        const targetLabelMobile = document.getElementById('targetLabelMobile');
+        const targetLabelPC = document.getElementById('targetLabelPC');
+        const domainMobile = document.getElementById('domainMobile');
+        const domainPC = document.getElementById('domainPC');
+
+        // Dropdowns
+        const methodDisplayMobile = document.getElementById('methodDisplayMobile');
+        const methodDropdownMobile = document.getElementById('methodDropdownMobile');
+        const methodDisplayPC = document.getElementById('methodDisplayPC');
+        const methodDropdownPC = document.getElementById('methodDropdownPC');
+
+        // Botões de ataque
+        const attackMobile = document.getElementById('attackMobile');
+        const attackPC = document.getElementById('attackPC');
+        const progressAreaMobile = document.getElementById('progressAreaMobile');
+        const progressAreaPC = document.getElementById('progressAreaPC');
+        const progressFillMobile = document.getElementById('progressFillMobile');
+        const progressFillPC = document.getElementById('progressFillPC');
+        const timeDisplayMobile = document.getElementById('timeDisplayMobile');
+        const timeDisplayPC = document.getElementById('timeDisplayPC');
+
+        // Inputs
+        const portMobile = document.getElementById('portMobile');
+        const portPC = document.getElementById('portPC');
+        const timeMobile = document.getElementById('timeMobile');
+        const timePC = document.getElementById('timePC');
+        const concurrentMobile = document.getElementById('concurrentMobile');
+        const concurrentPC = document.getElementById('concurrentPC');
+
+        // ---------- ESTADO ----------
         let currentLayer = '7';
         let currentMethod = 'HTTPS-BYPASS';
         let attackActive = false;
         let progressInterval = null;
-        let attackTimer = null;
         let startTime = 0;
         let totalSeconds = 60;
 
-        // valores originais para reset
-        const defaultTarget = '';
-        const defaultPort = '';
-        const defaultTime = '';
-        const defaultConcurrency = '';
-
-        // animação inicial
+        // ---------- ANIMAÇÃO INICIAL ----------
         setTimeout(() => {
             splash.style.opacity = '0';
             setTimeout(() => {
                 splash.classList.add('hidden');
                 selectionScreen.classList.remove('hidden');
-                selectionScreen.style.opacity = '1';
             }, 1000);
         }, 3000);
 
-        // seleção mobile/pc
+        // ---------- SELEÇÃO MOBILE/PC ----------
         selectMobile.addEventListener('click', () => {
-            dynamicGrid.className = 'grid-mobile';
             selectionScreen.classList.add('hidden');
             mainInterface.classList.remove('hidden');
+            mobileLayout.classList.remove('hidden');
+            pcLayout.classList.add('hidden');
+            setupDropdowns();
         });
 
         selectPC.addEventListener('click', () => {
-            dynamicGrid.className = 'grid-pc';
             selectionScreen.classList.add('hidden');
             mainInterface.classList.remove('hidden');
+            pcLayout.classList.remove('hidden');
+            mobileLayout.classList.add('hidden');
+            setupDropdowns();
         });
 
-        // popula dropdown
-        function populateDropdown(layer) {
-            const methods = layer === '7' ? layer7Methods : layer4Methods;
-            methodDropdown.innerHTML = '';
+        // ---------- CONFIGURA DROPDOWNS ----------
+        function setupDropdowns() {
+            // Mobile
+            populateDropdown(methodDropdownMobile, layer7Methods, (method) => {
+                currentMethod = method;
+                methodDisplayMobile.textContent = method;
+                methodDropdownMobile.classList.remove('show');
+            });
+            methodDisplayMobile.textContent = currentMethod;
 
+            // PC
+            populateDropdown(methodDropdownPC, layer7Methods, (method) => {
+                currentMethod = method;
+                methodDisplayPC.textContent = method;
+                methodDropdownPC.classList.remove('show');
+            });
+            methodDisplayPC.textContent = currentMethod;
+
+            methodDisplayMobile.onclick = (e) => {
+                e.stopPropagation();
+                methodDropdownMobile.classList.toggle('show');
+            };
+
+            methodDisplayPC.onclick = (e) => {
+                e.stopPropagation();
+                methodDropdownPC.classList.toggle('show');
+            };
+
+            document.addEventListener('click', (e) => {
+                if (!methodDisplayMobile.contains(e.target) && !methodDropdownMobile.contains(e.target)) {
+                    methodDropdownMobile.classList.remove('show');
+                }
+                if (!methodDisplayPC.contains(e.target) && !methodDropdownPC.contains(e.target)) {
+                    methodDropdownPC.classList.remove('show');
+                }
+            });
+        }
+
+        function populateDropdown(dropdown, methods, onSelect) {
+            dropdown.innerHTML = '';
             methods.forEach(method => {
                 const item = document.createElement('div');
                 item.className = 'method-item';
                 item.textContent = method;
-                item.addEventListener('click', () => {
-                    currentMethod = method;
-                    methodDisplay.textContent = method;
-                    methodDropdown.classList.remove('show');
-                });
-                methodDropdown.appendChild(item);
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    onSelect(method);
+                };
+                dropdown.appendChild(item);
             });
-
-            if (!methods.includes(currentMethod)) {
-                currentMethod = methods[0];
-                methodDisplay.textContent = currentMethod;
-            }
         }
 
-        // toggle dropdown
-        methodDisplay.addEventListener('click', (e) => {
-            e.stopPropagation();
-            methodDropdown.classList.toggle('show');
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!methodDisplay.contains(e.target) && !methodDropdown.contains(e.target)) {
-                methodDropdown.classList.remove('show');
-            }
-        });
-
-        // botões layer
+        // ---------- BOTÕES LAYER ----------
         layer7Btn.addEventListener('click', () => {
             layer7Btn.classList.add('active');
             layer4Btn.classList.remove('active');
             currentLayer = '7';
-            targetLabel.textContent = 'DOMAIN OR URL';
-            targetInput.placeholder = 'example.com';
-            targetInput.value = '';
-            populateDropdown('7');
+            
+            targetLabelMobile.textContent = 'domain or url';
+            targetLabelPC.textContent = 'domain or url';
+            domainMobile.placeholder = 'example.com';
+            domainPC.placeholder = 'example.com';
+            
+            populateDropdown(methodDropdownMobile, layer7Methods, (method) => {
+                currentMethod = method;
+                methodDisplayMobile.textContent = method;
+                methodDropdownMobile.classList.remove('show');
+            });
+            populateDropdown(methodDropdownPC, layer7Methods, (method) => {
+                currentMethod = method;
+                methodDisplayPC.textContent = method;
+                methodDropdownPC.classList.remove('show');
+            });
+            
+            if (!layer7Methods.includes(currentMethod)) {
+                currentMethod = layer7Methods[0];
+                methodDisplayMobile.textContent = currentMethod;
+                methodDisplayPC.textContent = currentMethod;
+            }
         });
 
         layer4Btn.addEventListener('click', () => {
             layer4Btn.classList.add('active');
             layer7Btn.classList.remove('active');
             currentLayer = '4';
-            targetLabel.textContent = 'IP TARGET';
-            targetInput.placeholder = '1.1.1.1';
-            targetInput.value = '';
-            populateDropdown('4');
+            
+            targetLabelMobile.textContent = 'IP target';
+            targetLabelPC.textContent = 'IP target';
+            domainMobile.placeholder = '1.1.1.1';
+            domainPC.placeholder = '1.1.1.1';
+            
+            populateDropdown(methodDropdownMobile, layer4Methods, (method) => {
+                currentMethod = method;
+                methodDisplayMobile.textContent = method;
+                methodDropdownMobile.classList.remove('show');
+            });
+            populateDropdown(methodDropdownPC, layer4Methods, (method) => {
+                currentMethod = method;
+                methodDisplayPC.textContent = method;
+                methodDropdownPC.classList.remove('show');
+            });
+            
+            if (!layer4Methods.includes(currentMethod)) {
+                currentMethod = layer4Methods[0];
+                methodDisplayMobile.textContent = currentMethod;
+                methodDisplayPC.textContent = currentMethod;
+            }
         });
 
-        // reseta campos
-        function resetFields() {
-            targetInput.value = '';
-            portInput.value = '';
-            timeInput.value = '';
-            concurrencyInput.value = '';
-        }
+        // ---------- FUNÇÃO DE ATAQUE ----------
+        function setupAttack(btn, progressArea, progressFill, timeDisplay, domainInput, portInput, timeInput, concurrentInput) {
+            btn.onclick = () => {
+                if (attackActive || btn.disabled) return;
 
-        // barra de progresso
-        function updateProgress() {
-            if (progressInterval) clearInterval(progressInterval);
-
-            progressInterval = setInterval(() => {
-                if (!attackActive) {
-                    clearInterval(progressInterval);
-                    progressInterval = null;
+                const target = domainInput.value.trim();
+                if (!target) {
+                    alert('Target inválido');
                     return;
                 }
 
-                const elapsed = (Date.now() - startTime) / 1000;
-                const percent = Math.min(100, (elapsed / totalSeconds) * 100);
-                progressFill.style.width = percent + '%';
-                timeDisplay.textContent = `${Math.max(0, totalSeconds - elapsed).toFixed(1)}s / ${totalSeconds}s (${Math.floor(percent)}%)`;
+                totalSeconds = parseInt(timeInput.value) || 60;
+                attackActive = true;
+                
+                btn.disabled = true;
+                btn.classList.add('loading');
+                btn.classList.remove('sent');
+                btn.textContent = '';
 
-                if (elapsed >= totalSeconds) {
-                    clearInterval(progressInterval);
-                    progressInterval = null;
-                }
-            }, 100);
+                progressArea.style.display = 'block';
+
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.classList.add('sent');
+                    btn.textContent = 'attack sent!';
+
+                    // Botão volta ao normal após 3 segundos
+                    setTimeout(() => {
+                        btn.classList.remove('sent');
+                        btn.textContent = 'attack';
+                    }, 3000);
+
+                    startTime = Date.now();
+                    
+                    if (progressInterval) clearInterval(progressInterval);
+                    
+                    progressInterval = setInterval(() => {
+                        const elapsed = (Date.now() - startTime) / 1000;
+                        const percent = Math.min(100, (elapsed / totalSeconds) * 100);
+                        progressFill.style.width = percent + '%';
+                        timeDisplay.textContent = `${Math.max(0, totalSeconds - elapsed).toFixed(1)}s / ${totalSeconds}s (${Math.floor(percent)}%)`;
+
+                        if (elapsed >= totalSeconds) {
+                            clearInterval(progressInterval);
+                            progressInterval = null;
+                            
+                            attackActive = false;
+                            btn.disabled = false;
+                            
+                            progressArea.style.display = 'none';
+                            progressFill.style.width = '0%';
+                            timeDisplay.textContent = '';
+
+                            domainInput.value = '';
+                            portInput.value = '443';
+                            timeInput.value = '60';
+                            concurrentInput.value = '1';
+                        }
+                    }, 100);
+
+                }, 3000);
+            };
         }
 
-        // ataque
-        attackBtn.addEventListener('click', () => {
-            if (attackActive) return;
+        // Configura ataques
+        setupAttack(
+            attackMobile, progressAreaMobile, progressFillMobile, timeDisplayMobile,
+            domainMobile, portMobile, timeMobile, concurrentMobile
+        );
 
-            const target = targetInput.value.trim();
-            if (!target) {
-                alert('Target inválido');
-                return;
-            }
+        setupAttack(
+            attackPC, progressAreaPC, progressFillPC, timeDisplayPC,
+            domainPC, portPC, timePC, concurrentPC
+        );
 
-            totalSeconds = parseInt(timeInput.value) || 60;
-            attackActive = true;
-
-            // desabilita botão
-            attackBtn.disabled = true;
-
-            // loading
-            attackBtn.classList.add('loading');
-            attackBtn.classList.remove('sent');
-            attackBtn.textContent = '';
-
-            // mostra barra de progresso
-            progressArea.style.display = 'block';
-
-            // 3 segundos simulando envio
-            attackTimer = setTimeout(() => {
-                attackBtn.classList.remove('loading');
-                attackBtn.classList.add('sent');
-                attackBtn.textContent = 'attack sent!';
-
-                // inicia progresso real
-                startTime = Date.now();
-                updateProgress();
-
-                // 1 segundo de verde
-                setTimeout(() => {
-                    attackBtn.classList.remove('sent');
-                    attackBtn.textContent = 'attack';
-                }, 1000);
-
-                // finaliza ataque após duração real
-                setTimeout(() => {
-                    attackActive = false;
-                    attackBtn.disabled = false;
-                    attackBtn.classList.remove('sent', 'loading');
-                    attackBtn.textContent = 'attack';
-
-                    // esconde barra de progresso
-                    progressArea.style.display = 'none';
-                    progressFill.style.width = '0%';
-                    timeDisplay.textContent = '';
-
-                    // RESETA OS CAMPOS
-                    resetFields();
-
-                }, (totalSeconds * 1000) - 1000);
-
-            }, 3000);
-        });
-
-        // inicializa
-        populateDropdown('7');
-        // limpa campos no início
-        resetFields();
+        // Inicializa
+        setupDropdowns();
     </script>
 </body>
 </html>
